@@ -14,13 +14,13 @@ class UI {
                     </div>
                     <div class="col-md-9">
                         <span class="badge badge-primary">Public Repos: ${user.public_repos}</span>
-                        <span class="badge badge-secondary">Public Gists: ${user.gists}</span>
+                        <span class="badge badge-secondary">Public Gists: ${user.gists ? user.gists : 'none'}</span>
                         <span class="badge badge-success">Followers: ${user.followers}</span>
                         <span class="badge badge-info">Following: ${user.following}</span>
                         <br><br>
                         <ul class="list-group">
                             <li class="list-group-item">Company: ${user.company}</li>
-                            <li class="list-group-item">Website/blog: <a href="${user.bog}" target="_blank">${user.blog}</a></li>
+                            <li class="list-group-item">Website/blog: <a href="${user.blog}" target="_blank">${user.blog}</a></li>
                             <li class="list-group-item">Location: ${user.location}</li>
                             <li class="list-group-item">Member since: ${user.created_at}</li>
                         </ul>
@@ -33,5 +33,30 @@ class UI {
         
         
         `;
+    }
+
+    showAlert(message, className) {
+        this.clearAlert();
+        const div = document.createElement('div');
+        div.className = className;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.searchContainer');
+        const search = document.querySelector('.search');
+        container.insertBefore(div, search)
+
+        setTimeout (() => {
+            this.clearAlert();
+        }, 3000)
+    }
+
+    clearAlert() {
+        const currentAlert = document.querySelector('.alert');
+        if(currentAlert) {
+            currentAlert.remove();
+        }
+    }
+
+    clearProfile() {
+        this.profile.innerHTML = '';
     }
 }
