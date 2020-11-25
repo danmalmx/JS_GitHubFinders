@@ -13,10 +13,10 @@ class UI {
                         <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-4">View profile</a>
                     </div>
                     <div class="col-md-9">
-                        <span class="badge badge-primary">Public Repos: ${user.public_repos}</span>
-                        <span class="badge badge-secondary">Public Gists: ${user.gists ? user.gists : 'none'}</span>
-                        <span class="badge badge-success">Followers: ${user.followers}</span>
-                        <span class="badge badge-info">Following: ${user.following}</span>
+                        ${user.public_repos ? `<span class="badge badge-primary">Public Repos: ${user.public_repos}</span>` : '' }
+                        ${user.gists ? `<span class="badge badge-secondary">Public Gists: ${user.gists}></span> ` : '' }
+                        ${user.followers ? `<span class="badge badge-success">Followers: ${user.followers}</span>` : '' }
+                        ${user.following ? `<span class="badge badge-info">Following: ${user.following}</span>` : '' }
                         <br><br>
                         <ul class="list-group">
                             <li class="list-group-item">Company: ${user.company}</li>
@@ -46,9 +46,9 @@ class UI {
                             <a href="${repo.html_url}" target="_blank">${repo.name}</a>
                         </div>
                         <div class="col-md-6">
-                            <span class="badge badge-primary">Stars: ${repo.stargazer_count}</span>
-                            <span class="badge badge-secondary">Watchers: ${repo.watchers_count}</span>
-                            <span class="badge badge-success">Forks: ${repo.forms_count}</span>
+                            ${repo.stargazers_count ? `<span class="badge badge-primary">Stars: ${repo.stargazers_count}</span>` : '' }
+                            ${repo.watchers_count? `<span class="badge badge-secondary">Watchers: ${repo.watchers_count}</span>` : '' }
+                            ${repo.forks_count ? `<span class="badge badge-success">Forks: ${repo.forks_count}</span>` : '' }
                         </div>
                     </div>
                 </div>
